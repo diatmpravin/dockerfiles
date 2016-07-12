@@ -1,9 +1,10 @@
 node('docker-cloud') {
+     def cathodeImage
 stage 'Build Docker Image'
     checkout scm
     dir('cathode') {
       //docker.image('kmadel/maven:3.3.3-jdk-8').inside('-v /data:/data') {
-          def cathodeImage = docker.build "kishorebhatia/cathode:1.0"
+          cathodeImage = docker.build "kishorebhatia/cathode:1.0"
       //}
     }
 stage 'Publish Docker Image'
